@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package driver;
+
+option go_package = "https://github.com/himanshuvaish/golang-grpc;golang_grpc";
+
+message Driver {
+    int32 id = 1;
+    string name = 2;
+    int32 wins = 3;
+    int32 poles = 4;
+}
+
+message AddDriverRequest {
+    Driver driver = 1;
+}
+
+message AddDriverResponse {
+    Driver driver =1;
+}
+
+message GetDriverRequest {
+    int32 id = 1;
+}
+
+message GetDriverResponse {
+    Driver driver = 1;
+}
+
+message UpdateDriverRequest {
+  int32 id = 1;
+  int32 wins = 2;
+  int32 poles = 3;
+}
+
+message UpdateDriverResponse {
+  Driver driver = 1;
+}
+
+message DeleteDriverRequest {
+  int32 id = 1;
+}
+
+message DeleteDriverResponse {
+  bool success = 1;
+}
+
+message ListDriversRequest {}
+
+message ListDriversResponse {
+  repeated Driver drivers = 1;
+}
+
+service DriverService {
+  rpc AddDriver(AddDriverRequest) returns (AddDriverResponse) {}
+  rpc GetDriver(GetDriverRequest) returns (GetDriverResponse) {}
+  rpc UpdateDriver(UpdateDriverRequest) returns (UpdateDriverResponse) {}
+  rpc DeleteDriver(DeleteDriverRequest) returns (DeleteDriverResponse) {}
+  rpc ListDrivers(ListDriversRequest) returns (ListDriversResponse) {}
+}
