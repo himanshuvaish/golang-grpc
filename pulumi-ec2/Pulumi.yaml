@@ -1,0 +1,7 @@
+name: pulumi-golanggrpc
+runtime: go
+description: golangrpc on ec2
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-go
